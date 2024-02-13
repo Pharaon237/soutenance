@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff0000, #ffffff, #00ff6e);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.5); /* Couleur blanche avec une opacité de 50% */
+    color: #0a0000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .brand {
+    font-size: 1.5rem;
+  }
+  .navbar-brand img {
+    width: 40px; /* Taille de l'image du logo */
+    margin-right: 10px;
+}
+  
+  .brand-toggle-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  .nav-link i {
+    margin-right: 5px; /* Espacement entre l'icône et le texte */
+}
+  
+  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #0a0000;
+  }
+  
+  .sidebar {
+    background-color: rgba(255, 255, 255, 0.5); /* Couleur blanche avec une opacité de 50% */
+    color: #0a0000;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* Vos styles existants */
+    /* Assurez-vous que la sidebar est cachée par défaut */
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    padding-top: 60px;
+    
+  }
+  
+  .sidebar-links {
+    list-style: none;
+  }
+  
+  .sidebar-links li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-links li a {
+    text-decoration: none;
+    color: #0a0000;
+  }
+  
+  .content {
+    margin-left: 220px; /*Adjust this value to accommodate the sidebar width*/
+    padding: 20px;
+    padding-top: 60px;
+    border: solid;
+  }
+  
+  .sidebar-open {
+    /* Affiche la sidebar lorsque la classe est appliquée */
+    transform: translateX(0);
+  }
+  
+  #sidebarToggle {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    color: #0a0000;
+    /* position: absolute; Position absolue pour rester fixe dans la navbar */
+    /* top: 50%; Positionnement vertical au milieu de la navbar */
+    /* transform: translateY(-50%); Ajustement pour centrer verticalement */
+    /* right: 20px; Ou positionnez-le comme vous le souhaitez */
+  }
+
+  @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

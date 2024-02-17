@@ -1,0 +1,12 @@
+footer.footer {
+    background-color: rgba(255, 255, 255, 0.5); /* Couleur blanche avec une opacité de 50% */
+    padding: 20px;
+}
+.footer .contain {
+    text-align: center; /* Centrage du texte dans le footer */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 0px;
+}

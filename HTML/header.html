@@ -3,45 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar et Sidebar</title>
+  <title>ShopCSS</title>
+  <link rel="shortcut icon" href="..\Image\logo_CSS.jpg">
   <link rel="stylesheet" href="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\css\all.min.css">
   <link rel="stylesheet" href="..\bootstrap-5.3.2\dist\css\bootstrap.min.css">
   <link rel="stylesheet" href="..\css\header.css">
 </head>
-<body>
-  <div class="navbar">
-      <div class="brand-toggle-container">
+  <body class="body_head">
+    <div class="navbar">
+      <div class="brand-toggle">
         <button id="sidebarToggle"><i class="fas fa-bars"></i></button>
-        <span class="brand"><a class="navbar-brand" href="#">
-          <img src="../Image/logo_CSS.jpg" alt="logo de l'entreprise CSS">
-          ShopCSS
-      </a></span>
+        <span class="brand">
+          <a class="navbar-brand" href="#">
+            <img src="../Image/logo_CSS.jpg" alt="logo de l'entreprise CSS">
+            ShopCSS
+          </a>
+        </span>
       </div>
-      <ul class="nav-links">
-        <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
-        <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
-        <li><a href="#"><i class="fas fa-info-circle"></i>À propos</a></li>
-        <li><a href="#"><i class="fas fa-envelope"></i>Contact</a></li>
+      <div>
+        <div class="search-container">
+          <input type="text" id="search-bar" placeholder="Rechercher...">
+          <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button>
+        </div>        
+      </div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
+          <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
+          <li><a href="#"><i class="fas fa-info-circle"></i>À propos</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="..\html\inscription.html"><i class="fas fa-user-plus"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <ul class="sidebar-links">
+        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Tableau de Bord</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i>Messages</a></li>
+        <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i>Paramètres</a></li>
+        <li><a href="..\php\catalogue.php"><i class="fas fa-book"></i>Cathalogue</a></li>
       </ul>
     </div>
-  </div>
-      
-  <div class="sidebar">
-    <ul class="sidebar-links">
-      <li><a href="#"><i class="fas fa-tachometer-alt"></i>Tableau de Bord</a></li>
-      <li><a href="#"><i class="fas fa-envelope"></i>Messages</a></li>
-      <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
-      <li><a href="#"><i class="fas fa-cog"></i>Paramètres</a></li>
-    </ul>
-  </div>
 
-  <!-- <div class="content">
-    <h1>Contenu Principal</h1>
+  <!-- <div class="content"> -->
+    <!--<h1>Contenu Principal</h1>
     <p>Ce texte représente le contenu principal de votre page.</p>
   </div> -->
-  <script src="..\JAVASCRIPT\header.js"></script>
+  <!-- <script src="..\JAVASCRIPT\header.js"></script>
   <script src="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\js\all.min.js"></script>
-  <script src="..\bootstrap-5.3.2\dist\css\bootstrap.min.css"></script>
+  <script src="..\bootstrap-5.3.2\dist\css\bootstrap.min.css"></script> -->
 
 </body>
 </html>

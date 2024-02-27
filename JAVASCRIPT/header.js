@@ -1,3 +1,9 @@
+ // dropdown
+  function toggleDropdown() {
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    dropdownMenu.classList.toggle("show");
+  }
+  
 // toggle-button
 document.getElementById('sidebarToggle').addEventListener('click', function() {
 document.querySelector('.sidebar').classList.toggle('sidebar-open');
@@ -21,4 +27,13 @@ function searchFunction() {
     }
   }
   
-      
+  document.getElementById("search-bar").addEventListener("keyup", function(event) {
+    // Vérifier si la touche pressée est la touche Entrée (code 13)
+    if (event.key === "Enter") {
+      // Appeler la fonction de recherche lorsque la touche Entrée est pressée
+      searchFunction();
+    }
+  });    
+
+ 
+  

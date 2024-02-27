@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShopCSS</title>
+  <title>SSTShop</title>
   <link rel="shortcut icon" href="..\Image\logo_CSS.jpg">
   <link rel="stylesheet" href="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\css\all.min.css">
   <link rel="stylesheet" href="..\bootstrap-5.3.2\dist\css\bootstrap.min.css">
@@ -31,8 +31,21 @@
           <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
           <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
           <li><a href="#"><i class="fas fa-info-circle"></i>À propos</a></li>
-          <li><a href="#"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="..\html\inscription.html"><i class="fas fa-user-plus"></i></a></li>
+          <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+          <!-- <li><a href="../PHP/connexion.php"><i class="fas fa-user-circle"></i></a></li> -->
+          <li>
+            <div class="dropdown">
+              <button class="dropdown-toggle" onclick="toggleDropdown()">
+                <i class="fas fa-user-circle"></i>
+              </button>
+              <div class="dropdown-menu" id="dropdownMenu">
+                <a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="../PHP/inscription.php"><i class="fas fa-user-plus"></i> Inscription</a>
+                <a href="../PHP/deconnexion.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+              </div>
+            </div>
+            
+          </li>
         </ul>
       </div>
     </div>
@@ -46,7 +59,13 @@
         <li><a href="..\php\catalogue.php"><i class="fas fa-book"></i>Cathalogue</a></li>
       </ul>
     </div>
-
+<script>
+   // dropdown
+   function toggleDropdown() {
+    var dropdownMenu = document.getElementById("dropdownMenu");
+    dropdownMenu.classList.toggle("show");
+  }
+</script>
   <!-- <div class="content"> -->
     <!--<h1>Contenu Principal</h1>
     <p>Ce texte représente le contenu principal de votre page.</p>

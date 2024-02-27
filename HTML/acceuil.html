@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique Informatique - Accueil</title>
-    <link rel="stylesheet" href="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\css\all.min.css">
-    <link rel="stylesheet" href="..\bootstrap-5.3.2\dist\css\bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="..\css\styles.css"> Assurez-vous d'ajuster le chemin en fonction de l'emplacement réel de votre fichier CSS -->
+    <link rel="shortcut icon" href="../Image/logo_CSS.jpg">   
+    <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="../bootstrap-5.3.2/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../css/catalogue.css"> -->
     <style>
         /* Ajoutez vos styles CSS personnalisés ici */
         main {
-            padding: 20px;
+            padding-top: 22px;
         }
 
         .product {
@@ -34,6 +34,9 @@
     </style>
 </head>
 <body>
+    <header>
+        <?php include("..\html\header.html");?>
+    </header>
     <main>
         <section class="hero">
             <h2>Bienvenue dans notre boutique informatique en ligne !</h2>
@@ -76,7 +79,12 @@
                 <button type="submit" class="btn btn-primary">S'abonner</button>
             </form>
         </section>
+        
     </main>
+    
+    <footer>  
+        <?php include("../html/footer.html");?>
+    </footer>
 
     <script src="..\JAVASCRIPT\header.js"></script>
     <script src="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\js\all.min.js"></script>

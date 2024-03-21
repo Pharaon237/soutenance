@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paiement</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/paiement_2.css">
+    <?php include("header.html"); ?>
+</head>
+<body class="body_paie">
+    <div class="container">
+        <form action="" class="form-section">
+            <h1 class="title">Credit Card Details</h1>
+
+            <div class="card-number-section">
+                <label for="cardNumberInput">Card Number</label>
+                <div class="input">
+                    <input type="text" id="cardNumberInput" required placeholder="**** **** **** ****">
+                    <span id="cardType" class="card-type">
+                        <i class="fab fa-cc-mastercard mastercard"></i>
+                        <i class="fas fa-mobile-alt mtn"></i>
+                        <i class="fas fa-sim-card orange"></i>
+                        <i class="fas fa-exclamation-circle error"></i>
+                    </span>
+                </div>
+            </div>
+            
+
+            <div class="card-name-section">
+                <label for="card-name-input">Name on Card</label>
+                <div class="input">
+                    <input type="text" id="card-name-input" required placeholder="Name Surname">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="card-expiry-section">
+                    <label for="card-expiry-input">Expiry Date</label>
+                    <div class="input">
+                        <input type="number" min="1" max="12" required placeholder="MM" id="card-expiry-input">
+                        <input type="number" required placeholder="YYYY" id="card-expiry-input">
+                    </div>
+                </div>
+
+                <div class="card-csv-section">
+                    <label for="card-csv-input">CSV No.</label>
+                    <i class="info-bubble" title="info-bubble">?</i>
+                    <div class="input">
+                        <input type="text" placeholder="123" minlength="3" maxlength="3" required id="card-csv-input">
+                    </div>
+                </div>
+            </div>
+
+            <button class="payment-btn">
+                <i class="fa fa-arrow-right"></i>
+                Continue to Payment
+            </button>
+        </form>
+        <div class="hero-section">
+            <img src="../PHP/Takam.jpg" alt="precile img">
+        </div>
+    </div>
+    <?php include("footer.html"); ?>
+    <script src="../JAVASCRIPT/paiement.js"></script>
+</body>
+</html>

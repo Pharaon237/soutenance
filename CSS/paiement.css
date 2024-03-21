@@ -1,0 +1,237 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+:root{
+    width: 100%;
+    height: 100%;
+    --primary-color: #24aae4;
+}
+
+.body_paie{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'montserrat', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    margin-top: -70px !important;
+}
+.container{
+    --padding-x: 36px;
+    --padding-y:42px;
+
+    width: 46.875rem;
+    height: 31.25rem;
+    background-color: rgb(73, 248, 190);
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    gap:32px;
+
+    padding: var(--padding-y) var(--padding-x);
+    margin-top: 70px;
+}
+
+.form-section{
+    position: relative;
+
+    font-size: 16px;
+}
+
+.form-section .title{
+    --overflow-w:.625rem;
+    position: relative;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 22px;
+    width: calc(100% + var(--overflow-w) +var(--padding-x));
+    height: 2.8rem;
+    line-height: 2.8rem;
+    vertical-align: middle;
+    right: calc(var(--overflow-w) + var(--padding-x));
+    padding-left: calc(var(--overflow-w) + var(--padding-x));
+}
+
+.form-section > [class*='-section'], .form-section .input-row{
+    width: 100%;
+    margin-top: 16px;
+}
+
+.form-section .input-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+}
+
+.form-section .card-number-section{
+    position: relative;
+    margin-top: 32px;
+}
+
+.form-section .card-number-section .card-type{
+    position: relative;
+    right: 2px;
+}
+
+.form-section .card-number-section .card-type svg{
+    display: none;
+    width: 2em;
+    height: 2em;
+    color: var(--primary-color);
+}
+
+.form-section .card-number-section .card-type .is-mastercard svg.mastercard,
+.form-section .card-number-section .card-type.is-error svg.error{
+    display: inline-block;
+}
+
+.form-section .card-number-section .card-type.is-error svg.error{
+    color: red;
+}
+ .form-section .card-csv-section .info-bubble{
+    position: absolute;
+    right: .375rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    cursor: default;
+ }
+
+ .card-expiry-section{
+    flex-basis: 100%;
+ }
+
+ .card-expiry-section .input{
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .card-expiry-section .input input{
+    flex-basis: 42%;
+ }
+
+ .form-section [class*='-section'] label{
+    font-weight: 500;
+ }
+ .form-section .input{
+    width: 100%;
+    margin-top: .5rem;
+ }
+
+ .form-section .input input{
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: .25rem .125rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(66,66,66);
+    background-color: transparent;
+ }
+
+ .form-section .input input.invalid{
+    border-color: red;
+ }
+
+ .form-section input::placeholder{
+    opacity: .5;
+ }
+
+ .form-section .input input:focus{
+    border-bottom: 1.5px solid rgb(0,0,0);
+ }
+
+ .form-section .payment-btn{
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: .3125rem;
+    border: none;
+    background-color: transparent;
+    border-radius: 5rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    padding: .75rem 1.5rem .75rem 0;
+
+    margin-top: 2rem;
+    transition: all ease-in-out 200ms;
+ }
+
+ .form-section .payment-btn .btn-icon{
+    color: currentColor;
+    transition: all ease-in-out 200ms;
+ }
+
+ .form-section .payment-btn:hover{
+    color: var(--primary-color);
+    background-color: #e0e4eb;
+    padding-left: 1.5rem;
+ }
+
+.form-section .payment-btn:hover .btn-icon{
+    color: var(--primary-color);
+}
+
+.hero-section{
+    width: 42%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-section img{
+    height: 100%;
+}
+
+@media screen and (max-width:800px){
+    .container{
+        width: 85%;
+    }   
+}
+
+@media screen and (max-width: 735px) {
+    :root{
+        font-size: 15px;
+    }
+    .container{
+        width: 90%;
+    }
+    .hero-section img{
+        height: 80%;
+    }
+}
+
+@media screen and (max-witdh:670px){
+    :root{
+        font-size: 15px;
+    }
+    .container{
+        justify-content: center;
+        background-color: transparent;
+        width: 88%;
+        min-width: 28rem;
+    }
+
+    .form-section{
+        font-size: 16px;
+    }
+
+    .form-section .title{
+        background-color: unset;
+        color: var(--primary-color);
+        font-size: 32px;
+        right: unset;
+        padding-left: unset;
+    }
+
+    .hero-section{
+        display: none;
+    }
+}

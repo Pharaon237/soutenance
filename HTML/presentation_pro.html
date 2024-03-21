@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php include("..\html\header.html");?>
+</head>
+<body>
+  <div class="bod">
+    <div class="content">
+      <h1 class="mt-4"><?php echo $nom;?></h1>
+      <div class="row">
+        <div class="col-md-4">
+          <?php
+    echo '<img src="'. $photo . '" class="img-fluid"  alt="' . $nom . '">';
+?>
+        </div>
+        <div class="col-md-8">
+          <h2 class="mt-4 txt-primary">Prix:<?php echo $pu;?></h2>
+          <h3>Description:</h3>
+          <p>
+            <?php echo $desc;?>
+          </p>
+          <h3>Spécifications Techniques:</h3>
+          <ul>
+            <li><strong>Couleur:</strong> <?php echo $coul;?></li>
+            <!-- <li><strong>Garantie:</strong> <?php echo $garnt;?></li> -->
+          </ul>
+          <button class="btn btn-primary"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <?php include'footer.html' ?>
+    </footer>
+  </div>
+</body>
+</html>

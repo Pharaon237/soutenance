@@ -1,0 +1,27 @@
+/* Style pour le panier d'achat */
+
+
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px;
+}
+
+#cart-items {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#cart-items .item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#cart-total {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+

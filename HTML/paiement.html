@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>paiemen</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../CSS/paiement.css'>
+    <script src='../JAVASCRIPT/paiement.js'></script>
+    <?php include("header.html");?>
+</head>
+<body class="body_paie">
+    <div class="container">
+        <form action=""class="form-section">
+            <h1 class="title">credit card Details</h1>
+
+            <div class="card-number-section">
+                <label for="cardNumberInput">Card Number</label>
+
+                <div class="input">
+                    <input type="text" id="cardNumberInput" required placeholder="**** **** **** ****">
+
+                    <span id="cardType" class="card-type">
+                        <!-- <svg class="mastercard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M11.454 17.021c.048.041.1.082.151.122a6.173 6.173 0 0 1-3.42 1.03A6.17 6.17 0 0 1 2.01 12a6.175 6.175 0 0 1 9.592-5.144c-.05.043-.1.082-.138.126A6.633 6.633 0 0 0 9.166 12c0 1.925.833 3.755 2.288 5.021zm4.361-11.195a6.14 6.14 0 0 0-3.416 1.03c.049.043.099.082.137.126 1.462 1.263 2.299 3.094 2.299 5.018s-.835 3.753-2.288 5.021c-.049.041-.101.082-.151.122a6.162 6.162 0 0 0 3.418 1.03 6.174 6.174 0 1 0 .001-12.347zM12 7.15A6.152 6.152 0 0 0 9.644 12 6.15 6.15 0 0 0 12 16.853 6.157 6.157 0 0 0 14.357 12 6.15 6.15 0 0 0 12 7.15z"></path></svg>
+                        <svg class="error" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z"></path></svg> -->
+                    </span>
+                </div>
+            </div>
+
+            <div class="card-name-section">
+                <label for="card-name-section">Name on Card</label>
+
+                <div class="input">
+                    <input type="text"required placeholder="Name surname" id="card-name-input">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="card-expiry-section">
+                    <label for="card-expiry-input">Expiry Date</label>
+
+                    <div class="input">
+                        <input type="number" min="1" max="12" required placeholder="MM" id="card-expiry-input">
+                        <input type="number"required placeholder="YYYY" id="card-expiry-input">
+                    </div>
+                </div>
+
+                <div class="card-csv-section">
+                    <label for="card-csv-input">CSV No.</label>
+                    <i class="info-bubble" title="info-bubble">?</i>
+
+                    <div class="input">
+                        <input type="text" placeholder="123" minlength="3" maxlength="3" required id="card-csv-input">
+                    </div>
+                </div>
+            </div>
+
+            <button class="payment-btn">
+                <i class="fa fa-arrow-rigth"></i>
+                continue to payment
+            </button>
+        </form>
+        <div class="hero-section">
+            <img src="../PHP/Takam.jpg" alt="pricile img">
+        </div>
+    </div>
+    <?php include("footer.html");?>
+</body>
+</html>

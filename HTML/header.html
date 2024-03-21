@@ -1,78 +1,104 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSTShop</title>
-  <link rel="shortcut icon" href="..\Image\logo_CSS.jpg">
-  <link rel="stylesheet" href="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\css\all.min.css">
-  <link rel="stylesheet" href="..\bootstrap-5.3.2\dist\css\bootstrap.min.css">
-  <link rel="stylesheet" href="..\css\header.css">
-</head>
-  <body class="body_head">
-    <div class="navbar">
-      <div class="brand-toggle">
-        <button id="sidebarToggle"><i class="fas fa-bars"></i></button>
-        <span class="brand">
-          <a class="navbar-brand" href="#">
-            <img src="../Image/logo_CSS.jpg" alt="logo de l'entreprise CSS">
-            ShopCSS
-          </a>
-        </span>
-      </div>
-      <div>
-        <div class="search-container">
-          <input type="text" id="search-bar" placeholder="Rechercher...">
-          <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button>
-        </div>        
-      </div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#"><i class="fas fa-home"></i>Accueil</a></li>
-          <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
-          <li><a href="#"><i class="fas fa-info-circle"></i>À propos</a></li>
-          <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
-          <!-- <li><a href="../PHP/connexion.php"><i class="fas fa-user-circle"></i></a></li> -->
-          <li>
-            <div class="dropdown">
-              <button class="dropdown-toggle" onclick="toggleDropdown()">
-                <i class="fas fa-user-circle"></i>
-              </button>
-              <div class="dropdown-menu" id="dropdownMenu">
-                <a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
-                <a href="../PHP/inscription.php"><i class="fas fa-user-plus"></i> Inscription</a>
-                <a href="../PHP/deconnexion.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
-              </div>
-            </div>
-            
-          </li>
-        </ul>
-      </div>
-    </div>
+  <link rel="shortcut icon" href="../Image/logo_CSS.jpg">
+  <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2/dist/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/brands.min.css">
+  <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/brands.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <!-- <link rel="stylesheet" href="..\Truculenta\Truculenta-VariableFont_opsz,wdth,wght.ttf"> -->
+  <?php
+  function afficher_les_pp(){
+    
+    try {
+        include("../php/connexion_bd.php");
+        global $a, $b, $c,$f;
+        $f=$_SESSION['email'];
+        // Vérifie si l'email est fourni via POST
+        if(isset($_POST['email'])) {
+            $email = $_POST['email'];
 
-    <div class="sidebar">
-      <ul class="sidebar-links">
-        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Tableau de Bord</a></li>
-        <li><a href="#"><i class="fas fa-envelope"></i>Messages</a></li>
-        <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
-        <li><a href="#"><i class="fas fa-cog"></i>Paramètres</a></li>
-        <li><a href="..\php\catalogue.php"><i class="fas fa-book"></i>Cathalogue</a></li>
+            // Utilisation de requête préparée pour éviter les injections SQL
+            $sql = "SELECT Non_util, Prenom_util, url_photo FROM utilisateurs WHERE url_photo= $e";
+            $stmt = $db->prepare($sql);
+            $stmt->execute([$email]);
+            $user = $stmt->fetch();
+
+            // Vérifie si l'utilisateur existe
+            if($user) {
+                $a = $user['Non_util'];
+                $b = $user['Prenom_util'];
+                $c = $user['url_photo'];
+            } else {
+                // L'utilisateur n'existe pas ou l'email est incorrect
+                // Gérer le cas où l'utilisateur n'est pas trouvé
+            }
+        }
+    } catch (Exception $e) {
+        die('Erreur : '.$e->getMessage());
+    }
+}
+  ?>
+</head>
+<body class="body_head">
+  <div class="navbar">
+    <div class="brand-toggle">
+      <button id="sidebarToggle"><i class="fas fa-bars"></i></button>
+      <span class="brand">
+        <a class="navbar-brand" href="#">
+          <img src="../Image/logo_CSS.jpg" alt="logo de l'entreprise CSS">
+          SSTShop
+        </a>
+      </span>
+    </div>
+    <div>
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Rechercher...">
+        <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button>
+      </div>        
+    </div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="acceuil.php"><i class="fas fa-home"></i>Accueil</a></li>
+        <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
+        <li><a href="#"><i class="fas fa-info-circle"></i>À propos</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+        <!-- <li><a href="../PHP/connexion.php"><i class="fas fa-user-circle"></i></a></li> -->
+        <li><a href="../PHP/panier.php"><i class="fa fa-cart-arrow-down"></i></a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropdown-toggle" onclick="toggleDropdown('userDropdown')">
+              <i class="fas fa-user-circle"></i>
+            </button>
+            <div class="dropdown-menu" id="userDropdown">
+              <a href="../PHP/info_compte.php"><i class="fas fa-info-circle"></i> info du compte</a>
+              <a href="../PHP/deconnexion.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
-<script>
-   // dropdown
-   function toggleDropdown() {
-    var dropdownMenu = document.getElementById("dropdownMenu");
-    dropdownMenu.classList.toggle("show");
-  }
-</script>
-  <!-- <div class="content"> -->
-    <!--<h1>Contenu Principal</h1>
-    <p>Ce texte représente le contenu principal de votre page.</p>
-  </div> -->
-  <!-- <script src="..\JAVASCRIPT\header.js"></script>
-  <script src="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\js\all.min.js"></script>
-  <script src="..\bootstrap-5.3.2\dist\css\bootstrap.min.css"></script> -->
+  </div>
+
+  <div class="sidebar">
+    <ul class="sidebar-links">
+      <li><a href="#"></a><?php afficher_les_pp();  echo '<img class="photo_p" src="'.$_SESSION['photo'].'" alt="photo de profile">'; echo $_SESSION['nom'].$c; ?></li>
+      <li><a href="#"><i class="fas fa-tachometer-alt"></i>Tableau de Bord</a></li>
+      <li><a href="#"><i class="fas fa-envelope"></i>Messages</a></li>
+      <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
+      <li><a href="#"><i class="fas fa-cog"></i>Paramètres</a></li>
+      <li><a href="..\php\catalogue.php"><i class="fas fa-book"></i>Cathalogue</a></li>
+      <li><a href="../php/acc_produit.php"><i class="fa fa-cube"></i>Produit</a></li>
+    </ul>
+  </div>
 
 </body>
 </html>

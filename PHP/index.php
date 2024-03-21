@@ -1,3 +1,3 @@
 <?php
-include("..\html\acceuil.html");
+    include("..\html\index.html");
 ?>

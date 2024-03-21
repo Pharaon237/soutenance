@@ -5,38 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSTShop</title>
   <link rel="shortcut icon" href="../Image/logo_CSS.jpg">
-  <link rel="stylesheet" href="..\fontawesome-free-6.5.1-web\fontawesome-free-6.5.1-web\css\all.min.css">
-  <link rel="stylesheet" href="..\bootstrap-5.3.2\dist\css\bootstrap.min.css">
+  <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/inscription.css">
 </head>
 <body>
   <div class="container">
     <h1>Inscription</h1>
-    <form action="#" method="POST">
+    <form action="../PHP/inscription.php" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
-        <label for="fullname" class="form-label">Nom complet</label>
-        <input type="text" class="form-control" id="fullname" name="fullname" required>
+        <label for="fullname" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="entrer votre nom ici" required>
+      </div>
+      <div class="mb-3">
+        <label for="names" class="form-label">prénom</label>
+        <input type="text" class="form-control" id="names" name="names" placeholder="entrer votre prenom ici" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Adresse email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control" id="email" name="email" placeholder="entrer votre adresse mail" required>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        <input type="password" class="form-control" id="password" name="password" placeholder="entrer un mot de passe" required>
       </div>
       <div class="form-group">
         <label for="confirmer_mot_de_passe">Confirmer le mot de passe :</label>
         <input type="password" id="confirmer_mot_de_passe" name="confirmer_mot_de_passe" required>
     </div>
-      <button type="submit" class="btn btn-primary">S'inscrire</button>
+    <div class="form-group">
+      <label for="photo">ajouter votre photo de profile ici</label>
+      <input type="file" id="photo" name="photo">
+  </div>
+      <button type="submit" name="inscription" class="btn btn-primary">S'inscrire</button>
       <button type="reset" class="btn btn-secondary">Annuler</button>
       <div>
         <p>vous avez déjà un compte ? <a href="../PHP/connexion.php">connecter vous</a></p>
       </div>
     </form>
   </div>
-  <div>
-    <?php include("footer.html");?>
-</div>
+
   

@@ -7,7 +7,7 @@ function searchFunction() {
   
     for (i = 0; i < products.length; i++) {
       product = products[i];
-      title = product.getElementsByClassName("product")[0];
+      title = product.getElementsByClassName("product-title")[0];
       if (title.innerText.toUpperCase().indexOf(filter) > -1) {
         product.style.display = "";
       } else {
@@ -23,3 +23,13 @@ function searchFunction() {
     searchFunction();
   }
 });
+
+
+// function printContent() {
+//   var content = document.querySelector('.content');
+//   var originalContents = document.body.innerHTML;
+//   var printContents = content.innerHTML;
+//   document.body.innerHTML = printContents;
+//   window.print();
+//   document.body.innerHTML = originalContents;
+// };

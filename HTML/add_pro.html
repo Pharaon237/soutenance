@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <?php include("header.html");?>
+  <style>
+    body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        footer{
+            margin-top: auto;
+        }
+  </style>
+</head>
+<body>
+<div class="content">
+  <a href="..\php\acc_produit.php"><i class="fa fa-arrow-circle-left"></i></a>
+  <h1 class="mt-1">Ajouter un Produit</h1>
+  <form action="add_produit.php" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="photo">ajouter une image de l'appareil</label>
+        <input type="file" id="photo" name="photo" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Nom du Produit</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description du Produit</label>
+      <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="price">Prix du Produit</label>
+      <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+    </div>
+    <div class="form-group">
+      <label for="coul">Couleur du produit</label>
+      <input type="text" class="form-control" id="coul" name="coul" required>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantité en Stock</label>
+      <input type="number" class="form-control" id="quantity" name="quantity" required>
+    </div>
+    <div class="form-group">
+      <label for="category_id">Catégorie</label>
+      <select class="form-control" id="category_id" name="category_id" required>
+        <?php afficher_cathegorie(); ?>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="brand_id">Marque</label>
+      <select class="form-control" id="brand_id" name="brand_id" placeholder="Sélectionnez une marque" required>
+        <?php afficher_marque(); ?>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" name="ajouter"><i class="fas fa-plus"></i> Ajouter le Produit</button>
+  </form>
+</div>
+
+<footer>
+  <?php include("footer.html");?>
+</footer>
+
+</body>
+</html>
+
+
+
+
+

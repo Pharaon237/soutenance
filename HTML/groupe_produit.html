@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <?php include("..\html\header.html");?>
+    <link rel="stylesheet" href="../CSS/groupe_produit.css">
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <h2>Bienvenue dans notre boutique informatique en ligne !</h2>
+            <p>Découvrez notre large gamme de produits et équipements informatiques.</p>
+        </section>
+
+        <section class="featured-products">
+            <h2>Produits en vedette</h2>
+            <div class="row">
+                <?php
+                Afficher_produit();
+                ?>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <h2>Abonnez-vous à notre newsletter</h2>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+                <button type="submit" class="btn btn-primary">S'abonner</button>
+            </form>
+        </section>
+        
+    </main>
+    
+    <footer>  
+        <?php include("../html/footer.html");?>
+    </footer>
+</body>
+</html>

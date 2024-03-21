@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php include("..\html\header.html");?>
+</head>
+<body >
+    <div class="content bod">
+        <h1>Inscription</h1>
+        <form action="../PHP/inscription.php" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="fullname" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="entrer votre nom ici" required>
+        </div>
+        <div class="mb-3">
+            <label for="names" class="form-label">prénom</label>
+            <input type="text" class="form-control" id="names" name="names" placeholder="entrer votre prenom ici" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Adresse email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="entrer votre adresse mail" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="entrer un mot de passe" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmer_mot_de_passe">Confirmer le mot de passe :</label>
+            <input type="password" id="confirmer_mot_de_passe" name="confirmer_mot_de_passe" required>
+        </div>
+        <div class="form-group">
+        <label for="photo">ajouter votre photo de profile ici</label>
+        <input type="file" id="photo" name="photo">
+    </div>
+        <button type="submit" name="inscription" class="btn btn-primary">Maître a jour</button>
+        <button type="reset" class="btn btn-secondary">Annuler</button>
+        <div>
+            <p>vous avez déjà un compte ? <a href="../PHP/connexion.php">connecter vous</a></p>
+        </div>
+        </form>
+    </div>
+    <footer>
+        <?php include'footer.html';?>
+    </footer>
+</body>
+</html>

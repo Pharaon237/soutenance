@@ -71,7 +71,7 @@
                 $_SESSION['email']=$email;
                 $_SESSION['photo']=$photo;
                 $sql->closecursor();
-                header('location:acceuil.php');
+                header('location:index.php');
             } else {
                 echo "<h3><font color=red>Echec d'insertion </font></h3>";
             }
@@ -105,7 +105,8 @@ if(isset($_POST['photo'])){
 if(isset($_POST['password'])){
     if(isset($_POST['confirmer_mot_de_passe'])){
         if($_POST['password']==$_POST['confirmer_mot_de_passe']){
-            $password=md5($_POST['password']);
+            $key = "Super_Amind.Key";
+            $password= encrypt($_POST['password'], $key);
         }
     }
 }

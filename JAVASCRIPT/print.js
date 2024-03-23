@@ -1,6 +1,4 @@
-
-
-  function printContent(className) {
+function printContent(className) {
     var content = document.querySelector('.' + className); // Sélectionne l'élément par sa classe
     if (content === null) {
         console.error("L'élément avec la classe spécifiée n'existe pas.");

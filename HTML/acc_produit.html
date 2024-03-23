@@ -35,6 +35,11 @@
             padding-right: 25%;
             padding-left: 25%;
         }
+        @media print {
+  .content .exclude-print {
+      display: none;
+  }
+}
     </style>
    
 </head>
@@ -42,12 +47,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 content">
-                <button class="print-button"  onclick="printContent('content')"><i class="fa fa-print" aria-hidden="true"></i>
+                <button class="print-button exclude-print"  onclick=" printContent('content')"><i class="fa fa-print" aria-hidden="true"></i>
                 </button>
-                <button class="add" id="openModalBtn">ajouter un categorie</button>
-                <button class="add" id="openModalBtn1">ajouter un marque</button>
-               <form action="../PHP/acc_produit.php" method="POST">
-                    <div id="modal" class="modal style">
+                <button class="exclude-print add" id="openModalBtn">ajouter un categorie</button>
+                <button class="add exclude-print" id="openModalBtn1">ajouter un marque</button>
+               <form action="../PHP/acc_produit.php" method="POST" class="exclude-print">
+                    <div id="modal" class="modal style exclude-print">
                         <div class="modal-content">
                         <span class="close">&times;</span>
                         <p>
@@ -60,8 +65,8 @@
                         </div>
                     </div>
                 </form>
-                <form action="../PHP/acc_produit.php" method="POST">
-                    <div id="modal1" class="modal style">
+                <form action="../PHP/acc_produit.php" method="POST" class="exclude-print">
+                    <div id="modal1" class="modal style exclude-print">
                         <div class="modal-content">
                         <span class="close">&times;</span>
                         <p>
@@ -78,9 +83,9 @@
                         </div>
                     </div>
                 </form>
-                <div class="mt-2 mb-3 d-flex justify-content-between">
-                    <h2 class="pull-left">Liste des Produits</h2>
-                    <a href="add_produit.php" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter</a>
+                <div class="mt-2 mb-3 d-flex justify-content-between exclude-print">
+                    <h2 class="pull-left exclude-print">Liste des Produits</h2>
+                    <a href="add_produit.php" class="btn btn-success exclude-print"><i class="fa fa-plus"></i> Ajouter</a>
                 </div>
                 <?php Afficher_produit(); ?>
             </div>

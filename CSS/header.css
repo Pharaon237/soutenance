@@ -208,14 +208,6 @@
   display: block;
 }
 
-.photo_p{
-  border: solid;
-  display: none;
-  border-radius: 100%;
-  max-width: 100px;
-  max-height: 100px;
-}
-
 .print-button {
   background-color: #4CAF50;
   border: none;
@@ -228,4 +220,10 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+}
+
+@media print {
+  .content .exclude-print {
+      display: none;
+  }
 }

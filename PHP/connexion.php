@@ -32,7 +32,7 @@
     }
     if(isset($_POST['mot_de_passe'])){
         $key = "Super_Amind.Key";
-        $mot_de_passe=$encrypted_message = encrypt($_POST['mot_de_passe'], $key);
+        $mot_de_passe= encrypt($_POST['mot_de_passe'], $key);
     }
     if(isset($_POST['connecter'])){
         recuper_utilisateur($email);
@@ -43,7 +43,9 @@
                 $_SESSION['prenom']=$b;
                 $_SESSION['email']=$e;
                 $_SESSION['photo']=$c;
-            header('location:../php/acceuil.php');
+                $_SESSION['nat']="0";
+                $_SESSION['role']="ADMIN";
+            header('location:../php/acc_produit.php');
         }else{
             echo'echec d autentification';
         }

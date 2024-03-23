@@ -33,5 +33,5 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
 }
 
-include("..\html\catalogue.html");
+include("..\html\groupe_produit.html");
 ?>

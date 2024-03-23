@@ -35,6 +35,10 @@
       <input type="number" class="form-control" id="price" name="price" step="0.01" required>
     </div>
     <div class="form-group">
+      <label for="garantie">période de garantie du produit</label>
+      <textarea class="form-control" id="garantie" name="garantie" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
       <label for="coul">Couleur du produit</label>
       <input type="text" class="form-control" id="coul" name="coul" required>
     </div>
@@ -53,6 +57,14 @@
       <select class="form-control" id="brand_id" name="brand_id" placeholder="Sélectionnez une marque" required>
         <?php afficher_marque(); ?>
       </select>
+    </div>
+    <div class="form-group">
+      <div class="form-group bg-secondary">qu'elle est la nature de ce produit ?<br>
+        <label for="vedette">vedette</label>
+        <input type="radio" id="vedette" name="nature"value="vedette" CHECKED>
+        <label for="normal">normal</label>
+        <input type="radio" id="normal" name="nature"value="normal"><br>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary" name="ajouter"><i class="fas fa-plus"></i> Ajouter le Produit</button>
   </form>

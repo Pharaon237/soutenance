@@ -4,7 +4,7 @@ function Afficher_produit(){
     try {
         include("connexion_bd.php");
 
-        $sql = "SELECT p.Id_pro, p.Nom_pro, p.PU_pro, p.Desc_pro, p.Coul_pro, p.Qte_pro, c.Lib_Cat, m.Lib_marq 
+        $sql = "SELECT p.Id_pro, p.Nom_pro, p.PU_pro,p.url_pro,p.Garanti_pro,p.Etats_pro, p.Desc_pro, p.Coul_pro, p.Qte_pro, c.Lib_Cat, m.Lib_marq 
                 FROM produit p
                 INNER JOIN cathegories c ON p.Id_cat = c.Id_cat
                 INNER JOIN marques m ON p.Id_marq = m.Id_marq";
@@ -23,7 +23,9 @@ function Afficher_produit(){
             echo "<th>Quantité</th>";
             echo "<th>Catégorie</th>";
             echo "<th>Marque</th>";
+            echo "<th>Garantie</th>";
             echo "<th>Action</th>";
+            echo "<th>Etats</th>";
             echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
@@ -38,6 +40,8 @@ function Afficher_produit(){
                 echo "<td>" . $row['Qte_pro'] . "</td>";
                 echo "<td>" . $row['Lib_Cat'] . "</td>";
                 echo "<td>" . $row['Lib_marq'] . "</td>";
+                echo "<td>" . $row['Garanti_pro'] . "</td>";
+                echo "<td>" . $row['Etats_pro'] . "</td>";
                 echo "<td>";
                 // echo '<a href="acc_produit.php?id=' . $row['Id_pro'] . '" class="me-3"><i class="fas fa-eye"></i></a>';
                 echo '<a href="update_produit.php?id=' . $row['Id_pro'] . '" class="me-3"><i class="fas fa-pencil-alt"></i></a>';
@@ -65,7 +69,7 @@ function Afficher_produit(){
             $sql -> bindvalue(':marq',$descriptions);
             $sql -> execute();
             if($sql){
-                header('location:..acc_produit.php');
+                header('location:acc_produit.php');
             }
             else{
                 echo '<h3><div class="alert alert-danger"><em>Echec d\'insertion</em></div></h3>';

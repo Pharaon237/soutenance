@@ -11,6 +11,9 @@
     footer {
       margin-top: auto;
     }
+    img{
+      max-height: 200px;
+    }
   </style>
 </head>
 <body>
@@ -21,28 +24,33 @@
   <h1 class="mt-1">Modifier un Produit</h1>
   <form action="update_produit.php" method="POST" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="photo">Ajouter une image de l'appareil</label>
-        <input type="file" id="photo" name="photo">
-    </div>
+      <?php echo '<img src="' .$photos. '" class="img-fluid" alt="photo du produit">'; ?>
+<label for="photo">Choisir une nouvelle photo :</label>
+<input type="file" id="photo" name="photo" value="<?php echo $photos; ?>" accept="image/*">
+  </div>  
     <div class="form-group">
       <label for="name">Nom du Produit</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="<?php echo htmlspecialchars($nom); ?>" >
+      <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($nom); ?>" >
     </div>
     <div class="form-group">
       <label for="description">Description du Produit</label>
-      <textarea class="form-control" id="description" name="description" rows="3" placeholder="<?php echo htmlspecialchars($desc); ?>" ></textarea>
+      <textarea class="form-control" id="description" name="description" rows="3" ><?php echo htmlspecialchars($desc); ?></textarea>
     </div>
     <div class="form-group">
       <label for="price">Prix du Produit</label>
-      <input type="number" class="form-control" id="price" name="price" step="0.01" placeholder="<?php echo htmlspecialchars($pu); ?>" >
+      <input type="number" class="form-control" id="price" name="price" step="0.01" value="<?php echo htmlspecialchars($pu); ?>" >
+    </div>
+    <div class="form-group">
+      <label for="garantie">période de garantie du produit</label>
+      <textarea class="form-control" id="garantie" name="garantie" rows="3" required><?php echo htmlspecialchars($garan); ?></textarea>
     </div>
     <div class="form-group">
       <label for="coul">Couleur du produit</label>
-      <input type="text" class="form-control" id="coul" name="coul" placeholder="<?php echo htmlspecialchars($coul); ?>" >
+      <input type="text" class="form-control" id="coul" name="coul" value="<?php echo htmlspecialchars($coul); ?>" >
     </div>
     <div class="form-group">
       <label for="quantity">Quantité en Stock</label>
-      <input type="number" class="form-control" id="quantity" name="quantity" placeholder="<?php echo htmlspecialchars($qte); ?>" >
+      <input type="number" class="form-control" id="quantity" name="quantity" value="<?php echo htmlspecialchars($qte); ?>" >
     </div>
     <div class="form-group">
       <label for="category_id">Catégorie</label>
@@ -58,6 +66,14 @@
         <?php afficher_marque(); ?>
       </select>
     </div>
+    <div class="form-group">
+      <div class="form-group bg-secondary">Quelle est la nature de ce produit ?<br>
+          <label for="vedette">Vedette</label>
+          <input type="radio" id="vedette" name="nature" value="vedette" <?php if($nat == 'vedette'){ echo 'CHECKED';} ?>>
+          <label for="normal">Normal</label>
+          <input type="radio" id="normal" name="nature" value="normal" <?php if($nat == 'normal'){ echo 'CHECKED';} ?>><br>
+      </div>
+  </div>  
     <button type="submit" class="btn btn-primary" name="modifier" value="<?php echo htmlspecialchars($val_enr); ?>"><i class="fas fa-plus"></i> Modifier le Produit</button>
   </form>
 </div>

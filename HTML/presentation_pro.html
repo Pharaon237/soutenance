@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-md-4">
           <?php
-    echo '<img src="'. $photo . '" class="img-fluid"  alt="' . $nom . '">';
+    echo '<img src="'. $photos . '" class="img-fluid"  alt="' . $nom . '">';
 ?>
         </div>
         <div class="col-md-8">
@@ -24,9 +24,17 @@
           <h3>Spécifications Techniques:</h3>
           <ul>
             <li><strong>Couleur:</strong> <?php echo $coul;?></li>
-            <!-- <li><strong>Garantie:</strong> <?php echo $garnt;?></li> -->
+            <li><strong>Garantie:</strong> <?php echo $garan;?></li>
           </ul>
-          <button class="btn btn-primary"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>
+          
+            <?php if(isset($_SESSION['role'])&& empty($_SESSION['role'])){
+            echo '<form action="#" method="post">
+            <input type="number" min="1" id="qant" name="qant">
+            <button type="submit" class="btn btn-primary" value="'.$val_enr.'"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>';
+          }else{
+            echo '<a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> connexion</a>';
+          }?>
+          </form>
         </div>
       </div>
     </div>

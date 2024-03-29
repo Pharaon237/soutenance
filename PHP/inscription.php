@@ -4,7 +4,6 @@
         global $fullname, $names, $email, $password, $compt, $photo;
         try{
             include("connexion_bd.php");
-            var_dump ($_FILES);
     
             // Vérifier si un fichier a été téléchargé
             if(isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
@@ -65,13 +64,15 @@
     
             if($sql){
                 echo"<script>alert(<h3><font color=blue>insertion réussie</font></h3>);</scritp>";
-                session_start();
-                $_SESSION['nom']=$fullname;
-                $_SESSION['prenom']=$names;
-                $_SESSION['email']=$email;
-                $_SESSION['photo']=$photo;
                 $sql->closecursor();
-                header('location:index.php');
+                session_start();
+                $_SESSION['nom']=$a;
+                $_SESSION['prenom']=$b;
+                $_SESSION['email']=$e;
+                $_SESSION['photo']=$c;
+                $_SESSION['nat']="0";
+                $_SESSION['role']=$f;
+                header("Location:index.php");
             } else {
                 echo "<h3><font color=red>Echec d'insertion </font></h3>";
             }
@@ -80,6 +81,16 @@
             die('Erreur:'.$e->getMessage());
         }
     }
+
+
+    function encrypt($message, $key) {
+        $cipher = "aes-256-cbc";
+        $iv_length = openssl_cipher_iv_length($cipher);
+        $iv = openssl_random_pseudo_bytes($iv_length);
+        $encrypted = openssl_encrypt($message, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+        return base64_encode($iv . $encrypted);
+    }
+
     ?>
     
 
@@ -89,7 +100,7 @@ $names="";
 $email="";
 $password="";
 $photo="";
-$compt="2";
+$compt="1";
 if(isset($_POST['fullname'])){
     $fullname=$_POST['fullname'];
 }

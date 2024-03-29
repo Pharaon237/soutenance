@@ -6,7 +6,7 @@
   
   .body_head {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #200dee, #ffffff, #07833c,#ffff,#0905ea);
+    background: linear-gradient(135deg, #200dee,#ffff,#007bff,#ffff,#0905ea);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
@@ -33,6 +33,7 @@
   .navbar-brand img {
     width: 40px; /* Taille de l'image du logo */
     margin-right: 10px;
+    border-radius: 8px;
 }
   
   .brand-toggle-container {
@@ -220,6 +221,11 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+}
+
+ul li.active {
+  font-weight: bold;
+  background-color: #659bff;
 }
 
 @media print {

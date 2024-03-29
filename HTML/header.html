@@ -14,7 +14,11 @@
   <link rel="stylesheet" href="../fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/brands.css">
   <link rel="stylesheet" href="../bootstrap-5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/header.css">
-  <!-- <link rel="stylesheet" href="..\Truculenta\Truculenta-VariableFont_opsz,wdth,wght.ttf"> -->
+  <?php 
+  global $pageName;
+  $url = $_SERVER['REQUEST_URI'];
+  $pageName = basename($url);
+?>  
   
 </head>
 <body class="body_head">
@@ -31,28 +35,28 @@
     <div>
       <div class="search-container">
         <input type="text" id="search-bar" placeholder="Rechercher...">
-        <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button>
+        <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button><?php echo $_SESSION['role']; ?>
       </div>        
     </div>
     <div>
       <ul class="nav-links">
-        <li><a href="index.php"><i class="fas fa-home"></i>Accueil</a></li>
+        <li <?php if($pageName=="index.php" or $pageName==""){echo'class="active"';}?>><a href="index.php"><i class="fas fa-home"></i>Accueil</a></li>
         <li><a href="#"><i class="fas fa-cogs"></i>Services</a></li>
         <li><a href="#"><i class="fas fa-info-circle"></i>À propos</a></li>
         <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
         <!-- <li><a href="../PHP/connexion.php"><i class="fas fa-user-circle"></i></a></li> -->
-        <li><a href="../PHP/panier.php"><i class="fa fa-cart-arrow-down"></i></a></li>
+        <li <?php if($pageName=="panier.php"){echo'class="active"';}?>><a href="../PHP/panier.php"><i class="fa fa-cart-arrow-down"></i></a></li>
         <li>
           <div class="dropdown">
             <button class="dropdown-toggle" onclick="toggleDropdown('userDropdown')">
               <i class="fas fa-user-circle"></i>
             </button>
             <div class="dropdown-menu" id="userDropdown">
-              <?php if(isset($_SESSION['nat'])) { // verrifie si il s'agie d'un client où de l'admin
+              <?php if(isset($_SESSION['role']) && !empty($_SESSION['role'])) { // verrifie si il s'agie d'un client où de l'admin
               echo '<a href="../PHP/info_compte.php"><i class="fas fa-info-circle"></i> info du compte</a>
               <a href="../PHP/deconnexion.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>';
-              if($_SESSION['role']==ADMIN){
-               echo'<a href="../PHP/info_compte_util.php"><i class="fas fa-sign-out-alt"></i> info compte utilisateur</a>';
+              if($_SESSION['role']=="ADMIN"){
+                echo '<a href="../PHP/info_compte.php"><i class="fas fa-info-circle"></i> info du compte</a>';
               }
               }else{
                 echo '<a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> connexion</a> 
@@ -71,10 +75,15 @@
     <ul class="sidebar-links">
       <li><a href="#"></a><?php echo '<img class="photo_p" src="'.'" alt="photo de profile">'; ?></li>
       <li><a href="#"><i class="fas fa-tachometer-alt"></i>Tableau de Bord</a></li>
-      <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
+      <li <?php if($pageName=="notification.php"){echo'class="active"';}?>><a href="../PHP/notification.php"><i class="fas fa-bell"></i>Notifications</a></li>
       <li><a href="#"><i class="fas fa-cog"></i>Paramètres</a></li>
-      <li><a href="..\php\catalogue.php"><i class="fas fa-book"></i>Cathalogue</a></li>
-      <li><a href="../php/acc_produit.php"><i class="fa fa-cube"></i>Produit</a></li>
+      <li <?php if($pageName=="catalogue.php"){echo'class="active"';}?>><a href="..\php\catalogue.php"><i class="fas fa-book"></i>Cathalogue</a></li>
+      <?php
+if(isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN") {
+    $activeClass = ($pageName == "acc_produit.php") ? "active" : "";
+    echo '<li class="' . $activeClass . '"><a href="../php/acc_produit.php"><i class="fa fa-cube"></i>Produit</a></li>';
+}
+?>
     </ul>
   </div>
 

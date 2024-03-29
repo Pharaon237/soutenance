@@ -15,14 +15,7 @@ function supprime_image($db, $id){
                 // Vérifiez si le fichier existe avant de tenter de le supprimer
                 if (file_exists($chemin_image_a_supprimer)) {
                     // Supprimez le fichier
-                    if (unlink($chemin_image_a_supprimer)) {
-                        echo "L'image a été supprimée avec succès.";
-                    } else {
-                        echo "Erreur lors de la suppression de l'image.";
-                    }
-                } else {
-                    echo "L'image n'existe pas.";
-                }
+                    unlink($chemin_image_a_supprimer);
             }
         } else {
             echo "Aucune image associée à cet ID de produit.";

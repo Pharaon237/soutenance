@@ -27,14 +27,15 @@
             <li><strong>Garantie:</strong> <?php echo $garan;?></li>
           </ul>
           
-            <?php if(isset($_SESSION['role'])&& empty($_SESSION['role'])){
+            <?php if(isset($_SESSION['role'])){
             echo '<form action="#" method="post">
             <input type="number" min="1" id="qant" name="qant">
-            <button type="submit" class="btn btn-primary" value="'.$val_enr.'"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>';
+            <button type="submit" class="btn btn-primary" value="'.$val_enr.'"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>
+          </form>';
           }else{
             echo '<a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> connexion</a>';
           }?>
-          </form>
+          
         </div>
       </div>
     </div>

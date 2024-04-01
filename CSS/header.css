@@ -124,6 +124,13 @@
     /* right: 20px; Ou positionnez-le comme vous le souhaitez */
   }
 
+  .sidebar .photo_p {
+    width: 100px !important;
+    max-height: 150px !important;
+    border-radius: 8px !important;
+  }
+  
+
   @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -227,6 +234,7 @@ ul li.active {
   font-weight: bold;
   background-color: #659bff;
 }
+
 
 @media print {
   .content .exclude-print {

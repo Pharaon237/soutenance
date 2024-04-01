@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -30,8 +29,14 @@ function decrypt($encrypted_message, $key) {
     return openssl_decrypt($encrypted, $cipher, $key, OPENSSL_RAW_DATA, $iv);
 }
 
+// Récupération ou définition du nom de la session
+$session_name = "my_app_session";
+session_name($session_name);
+session_start();
+
 $email = isset($_POST['email']) ? $_POST['email'] : "";
 $mot_de_passe = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : "";
+$pageName = isset($_GET['pageName']) ? $_GET['pageName'] : "index.php";
 
 if(isset($_POST['connecter'])) {
     $utilisateur = recuper_utilisateur($email);
@@ -41,14 +46,22 @@ if(isset($_POST['connecter'])) {
         $mot = decrypt($utilisateur['Pwd_util'], $key);
 
         if($mot == $mot_de_passe) {
-            echo "<script>alert('Bienvenue ".$utilisateur['Nom_util']."');</script>";
+            // Création d'un identifiant de session unique
+            session_regenerate_id(true);
+
+            $_SESSION['id']=$utilisateur['Id_util'];
             $_SESSION['nom'] = $utilisateur['Nom_util'];
             $_SESSION['prenom'] = $utilisateur['Prenom_util'];
             $_SESSION['email'] = $utilisateur['email_util'];
             $_SESSION['photo'] = $utilisateur['url_photo'];
             $_SESSION['nat'] = "0";
             $_SESSION['role'] = $utilisateur['lib_rôle'];
-            header("Location:index.php");
+
+            if(isset($pageName)){
+                header("Location: $pageName");
+            } else {
+                header("Location: index.php");
+            }
             exit();
         } else {
             echo "<script>alert('Échec de l'authentification');</script>";

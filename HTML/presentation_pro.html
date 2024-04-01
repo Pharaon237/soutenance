@@ -4,6 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php include("..\html\header.html");?>
+  <style>
+    button[type="submit"],.ope,input[type="submit"] {
+    background-color: green;
+    color: white;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"],#openModalBtn,input[type="submit"]:hover {
+    background-color: darkgreen;
+}
+
+/* Style du modal */
+.modal {
+    display: none; /* Le modal est caché par défaut */
+    position: fixed; /* Positionnement fixe pour le maintenir au centre de l'écran */
+    z-index: 1; /* Assure que le modal soit au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%; /* Couvre toute la largeur de l'écran */
+    height: 100%; /* Couvre toute la hauteur de l'écran */
+    overflow: auto; /* Permet de faire défiler si le contenu du modal est trop grand */
+    background-color: rgba(0,0,0,0.4); /* Couleur de fond semi-transparente pour l'arrière-plan */
+}
+
+/* Style du contenu du modal */
+.modal-content {
+    background-color: #fefefe; /* Couleur de fond du contenu du modal */
+    margin: 15% auto; /* Centrage vertical du contenu du modal */
+    padding: 20px;
+    border: 1px solid #888; /* Bordure grise */
+    width: 80%; /* Largeur du contenu du modal */
+    max-width: 500px; /* Largeur maximale du contenu du modal */
+    border-radius: 10px; /* Coins arrondis */
+    position: relative; /* Position relative pour permettre un positionnement absolu du bouton de fermeture */
+}
+
+/* Style du bouton de fermeture du modal */
+.close {
+    color: #aaa; /* Couleur du texte du bouton de fermeture */
+    float: right; /* Alignement à droite */
+    font-size: 28px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Changement de couleur du texte lors du survol ou du focus */
+    text-decoration: none; /* Pas de soulignement */
+    cursor: pointer; /* Curseur de souris lors du survol */
+}
+
+    </style>
 </head>
 <body>
   <div class="bod">
@@ -26,12 +81,32 @@
             <li><strong>Couleur:</strong> <?php echo $coul;?></li>
             <li><strong>Garantie:</strong> <?php echo $garan;?></li>
           </ul>
-          
             <?php if(isset($_SESSION['role'])){
-            echo '<form action="#" method="post">
-            <input type="number" min="1" id="qant" name="qant">
-            <button type="submit" class="btn btn-primary" value="'.$val_enr.'"><i class="fas fa-cart-plus"></i> Ajouter au Panier</button>
-          </form>';
+            echo '<form action="panier.php" method="post">
+              <label for="qant">Quantée a commander</label>
+              <input type="number" min="1" id="qant" name="qant">
+              <input type="hidden" name="pageName" value="'. $pageName.'">
+              <button type="submit" class="btn btn-primary" value="'.$val_enr.'" name="val_enr">
+                <i class="fas fa-cart-plus"></i> 
+              </button><button type="button" id="openModalBtn" class="commander-btn ope"><i class="fas fa-credit-card"></button>
+              <div id="modal" class="modal">
+                  <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <h2>Choisissez votre mode de paiement :</h2>
+                      <form id="modePaiementForm" action="traitement.php" method="post">
+                          <label for="modePaiement">Mode de paiement :</label>
+                          <select id="modePaiement" name="modePaiement">
+                              <option value="Espèces">Espèces</option>
+                              <option value="Carte de crédit">Carte de crédit</option>
+                              <option value="PayPal">PayPal</option>
+                              <option value="Virement bancaire">Virement bancaire</option>
+                          </select>
+                          <input type="submit" value="Valider">
+                      </form>
+                  </div>
+              </div>
+            </form>
+            ';
           }else{
             echo '<a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> connexion</a>';
           }?>
@@ -43,5 +118,42 @@
       <?php include'footer.html' ?>
     </footer>
   </div>
+  <script>
+    // Récupération des éléments HTML
+    const modal = document.getElementById('modal');
+    const closeModalBtn = document.querySelector('.close');
+    const commanderButtons = document.querySelectorAll('.commander-btn');
+    const modePaiementForm = document.getElementById('modePaiementForm');
+    const modePaiementSelect = document.getElementById('modePaiement');
+
+    // Fonction pour ouvrir le modal lorsque le bouton "Commander" est cliqué
+    commanderButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Récupération des données du produit à commander depuis l'attribut data-xxx
+            const id = this.getAttribute('data-id');
+            const nom = this.getAttribute('data-nom');
+            const pu = this.getAttribute('data-pu');
+            const qte = this.getAttribute('data-qte');
+
+            // Pré-remplissage du formulaire avec les données du produit
+            modePaiementForm.setAttribute('action', 'traitement.php?id=' + id); // Lien vers le script de traitement avec l'ID du produit
+            modePaiementSelect.value = ''; // Réinitialisation du sélecteur de mode de paiement
+            // Affichage du modal
+            modal.style.display = 'block';
+        });
+    });
+
+    // Fonction pour fermer le modal en cliquant sur le bouton de fermeture
+    closeModalBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    // Fonction pour fermer le modal en cliquant en dehors de celui-ci
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>

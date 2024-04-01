@@ -41,7 +41,7 @@
                 } else {
                     $nom_photo = $fullname.".". $imageFileType;
                     if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-                        $photo = "../image/".$nom_photo; // Définir le chemin d'accès de l'image dans la variable $photo
+                        $photo = "../image/utilisateur/".$nom_photo; // Définir le chemin d'accès de l'image dans la variable $photo
                     } else {
                         $photo="../image/utilisateur/avatar.jpg";
                          echo "Desoler nous ne pouvons pas telecharger votre image";

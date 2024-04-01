@@ -24,4 +24,7 @@
     font-size: 1.2em;
     font-weight: bold;
 }
+.imxage img{
+    max-height: 5px;
+ }
 

@@ -1,0 +1,8 @@
+{
+    "name": "pianne/vrai-projet-soutenance",
+    "description": "E-commerce de CSS",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    }
+}

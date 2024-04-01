@@ -11,7 +11,8 @@
 </head>
 <body>
     <div class="container">
-        <form action="../php/connexion.php" method="POST">
+        <?php $pageName = isset($_GET['pageName']) ? $_GET['pageName'] : "index.php";?>
+        <form action="../php/connexion.php?pageName=<?php echo $pageName; ?>" method="POST">
             <h2>Connexion</h2>
             <div class="form-group">
                 <label for="email">Email :</label>

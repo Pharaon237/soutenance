@@ -34,8 +34,10 @@
     </div>
     <div>
       <div class="search-container">
+        <div onclick="goBack()"><i class="fa fa-arrow-circle-left"></i></div>
+      <div onclick="goForward()"><i class="fa fa-arrow-circle-right"></i></div>
         <input type="text" id="search-bar" placeholder="Rechercher...">
-        <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button><?php echo $_SESSION['role']; ?>
+        <button type="button" class="sbutton" onclick="searchFunction()"><i class="fas fa-search"></i></button>
       </div>        
     </div>
     <div>
@@ -59,7 +61,7 @@
                 echo '<a href="../PHP/info_compte.php"><i class="fas fa-info-circle"></i> info du compte</a>';
               }
               }else{
-                echo '<a href="../PHP/connexion.php"><i class="fas fa-sign-in-alt"></i> connexion</a> 
+                echo '<a href="../PHP/connexion.php?pageName=' . urlencode($pageName) . '"><i class="fas fa-sign-in-alt"></i> connexion</a> 
                 <a href="../PHP/inscription.php"><i class="fas fa-user-plus"></i>s&acuteinscrire</a>';
               }
 
@@ -73,7 +75,8 @@
 
   <div class="sidebar">
     <ul class="sidebar-links">
-      <li><a href="#"></a><?php echo '<img class="photo_p" src="'.'" alt="photo de profile">'; ?></li>
+      <?php if(isset($_SESSION['role'])){echo'
+      <li><a href="#"><img class="photo_p" src="'.$_SESSION['photo'].'" alt="photo de profile"></a>'.$_SESSION['nom'].'</li>'; }?> 
       <li><a href="#"><i class="fas fa-tachometer-alt"></i>Tableau de Bord</a></li>
       <li <?php if($pageName=="notification.php"){echo'class="active"';}?>><a href="../PHP/notification.php"><i class="fas fa-bell"></i>Notifications</a></li>
       <li><a href="#"><i class="fas fa-cog"></i>Paramètres</a></li>

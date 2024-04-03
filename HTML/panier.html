@@ -74,45 +74,71 @@ button[type="submit"],#openModalBtn,input[type="submit"]:hover {
 </div>
 
 <footer>
-    
     <?php include '../html/footer.html'; ?>
 </footer>
 <script>
-    // Récupération des éléments HTML
-    const modal = document.getElementById('modal');
-    const closeModalBtn = document.querySelector('.close');
-    const commanderButtons = document.querySelectorAll('.commander-btn');
-    const modePaiementForm = document.getElementById('modePaiementForm');
-    const modePaiementSelect = document.getElementById('modePaiement');
+  // Récupération des éléments HTML
+const modal = document.getElementById('modal');
+const closeModalBtn = document.querySelector('.close');
+const commanderButtons = document.querySelectorAll('.commander-btn');
+const modePaiementForm = document.getElementById('modePaiementForm');
+const modePaiementSelect = document.getElementById('modePaiement');
 
-    // Fonction pour ouvrir le modal lorsque le bouton "Commander" est cliqué
-    commanderButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Récupération des données du produit à commander depuis l'attribut data-xxx
-            const id = this.getAttribute('data-id');
-            const nom = this.getAttribute('data-nom');
-            const pu = this.getAttribute('data-pu');
-            const qte = this.getAttribute('data-qte');
+// Fonction pour ouvrir le modal lorsque le bouton "Commander" est cliqué
+commanderButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Récupération des données du produit à commander depuis l'attribut data-xxx
+        const id = this.getAttribute('data-id');
 
-            // Pré-remplissage du formulaire avec les données du produit
-            modePaiementForm.setAttribute('action', 'traitement.php?id=' + id); // Lien vers le script de traitement avec l'ID du produit
-            modePaiementSelect.value = ''; // Réinitialisation du sélecteur de mode de paiement
-            // Affichage du modal
-            modal.style.display = 'block';
-        });
+        // Création de champs invisibles pour stocker les données
+        const hiddenIdInput = document.createElement('input');
+        hiddenIdInput.type = 'hidden';
+        hiddenIdInput.name = 'id_produit';
+        hiddenIdInput.value = id;
+
+        // Ajout des champs invisibles au formulaire
+        modePaiementForm.appendChild(hiddenIdInput);
+
+        // Affichage du modal
+        modal.style.display = 'block';
     });
+});
 
-    // Fonction pour fermer le modal en cliquant sur le bouton de fermeture
-    closeModalBtn.onclick = function() {
+// Fonction pour fermer le modal en cliquant sur le bouton de fermeture
+closeModalBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+// Fonction pour fermer le modal en cliquant en dehors de celui-ci
+window.onclick = function(event) {
+    if (event.target == modal) {
         modal.style.display = 'none';
     }
+}
 
-    // Fonction pour fermer le modal en cliquant en dehors de celui-ci
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
+// Fonction pour envoyer les données vers commande.php lorsque le formulaire est soumis
+modePaiementForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Empêche le comportement par défaut du formulaire
+
+    const formData = new FormData(this); // Crée un objet FormData contenant les données du formulaire
+
+    // Envoi des données via une requête AJAX
+    fetch('../php/commande.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        // Traitez la réponse de commande.php si nécessaire
+        console.log('Commande envoyée avec succès');
+        // Vous pouvez ajouter ici des actions supplémentaires si la commande est réussie
+    })
+    .catch(error => {
+        console.error('Erreur lors de l\'envoi de la commande:', error);
+        // Vous pouvez ajouter ici des actions supplémentaires en cas d'erreur lors de l'envoi de la commande
+    });
+});
+
+
 </script>
 </body>
 </html>

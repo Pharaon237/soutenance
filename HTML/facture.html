@@ -81,7 +81,7 @@
         <h2>Détails de la facture</h2>
         <p>Date: 31/03/2024</p>
         <p>Numéro de facture: SSTF</p>
-        <p>Client: John Doe</p>
+        <p>Client: ANGE Lugresse</p>
       </div>
     </div>
     <table class="invoice-items">
@@ -128,6 +128,9 @@
     </table>
     <div class="invoice-total">
       <p>Total à payer: <?php echo $Total; ?></p>
+      <form action="../PHP/facture.php" method="post">
+        <button type="submit" name="mail">envoyer</button>
+      </form>
     </div>
     <div class="invoice-footer">
       <img src="../image/bas facture.png" alt="Pied de la facture"/>

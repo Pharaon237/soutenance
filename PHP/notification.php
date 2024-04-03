@@ -1,18 +1,15 @@
 <?php
-// Importer la classe PHPMailer
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
-// Charger PHPMailer via Composer
 require '../vendor/autoload.php';
 
-// Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer(true);
 
 try {
     // Paramètres SMTP
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = 'smtp.outlook.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'pernelpianne02@gmail.com'; // Votre adresse Gmail
     $mail->Password = 'Pernel2@24'; // Votre mot de passe Gmail
@@ -21,12 +18,16 @@ try {
 
     // Destinataire et expéditeur
     $mail->setFrom('pernelpianne02@gmail.com', 'Pernel Pianne');
-    $mail->addAddress('foudjitchouatavladimir@gmail.com', 'Vladimir');
+    $mail->addAddress('annysmile549@gmail.com', 'SMILE');
 
-    // Contenu de l'e-mail
+    // Contenu de l'e-mail (le contenu de la facture généré par facture.php)
+    ob_start(); // Démarrer la capture de sortie
+    include '../php/facture.php'; // Inclure le contenu de la facture généré par facture.php
+    $content = ob_get_clean(); // Récupérer le contenu capturé et vider le tampon de sortie
+
     $mail->isHTML(true); // Le contenu est HTML
     $mail->Subject = 'Sujet de l\'e-mail';
-    $mail->Body = 'Contenu de l\'e-mail';
+    $mail->Body = $content;
 
     // Envoyer l'e-mail
     $mail->send();
@@ -35,6 +36,8 @@ try {
     echo 'Une erreur s\'est produite lors de l\'envoi de l\'e-mail : ', $mail->ErrorInfo;
 }
 ?>
+
+
 
 
 

@@ -34,11 +34,6 @@ function decrypt($encrypted_message, $key)
     return openssl_decrypt($encrypted, $cipher, $key, OPENSSL_RAW_DATA, $iv);
 }
 
-// Récupération ou définition du nom de la session
-$session_name = 'my_app_session';
-session_name($session_name);
-session_start();
-
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $mot_de_passe = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : '';
 $pageName = isset($_GET['pageName']) ? $_GET['pageName'] : 'index.php';
@@ -51,9 +46,6 @@ if (isset($_POST['connecter'])) {
         $mot = decrypt($utilisateur['Pwd_util'], $key);
 
         if ($mot == $mot_de_passe) {
-            // Création d'un identifiant de session unique
-            session_regenerate_id(true);
-
             $_SESSION['id'] = $utilisateur['Id_util'];
             $_SESSION['nom'] = $utilisateur['Nom_util'];
             $_SESSION['prenom'] = $utilisateur['Prenom_util'];
@@ -62,10 +54,10 @@ if (isset($_POST['connecter'])) {
             $_SESSION['nat'] = '0';
             $_SESSION['role'] = $utilisateur['lib_rôle'];
 
-            if (isset($pageName) && $pageName != php) {
-                header("Location: $pageName");
-            } else {
+            if (isset($pageName) && $pageName == 'php') {
                 header('Location: index.php');
+            } else {
+                header("Location: $pageName");
             }
             exit();
         } else {

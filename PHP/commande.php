@@ -5,21 +5,24 @@
             include 'connexion_bd.php';
 
             // Insertion des données dans la base de données
-            $sql = 'INSERT INTO commande(Qte_com,Etat_com,Id_util) values(:qte,:etat,:id)';
-            $sql = $db->prepare($sql);
-            $sql->bindValue(':id', $id_util);
-            $sql->bindValue(':Etat_com', 'passer');
-            $sql->bindValue(':qte', $qte);
-            $sql->execute();
-            if ($sql) {
-                echo "<script><h3><font color=blue>alert('produit commander');</font></h3></script>";
-                header('Location:commande.php');
+            $sql = 'INSERT INTO commandes(Qte_com, Etat_com, Id_util) VALUES (:qte, :etat, :id)';
+            $stmt = $db->prepare($sql);
+            $etat = 'passer'; // Valeur de l'état définie ici
+            $stmt->bindValue(':id', $id_util);
+            $stmt->bindValue(':etat', $etat);
+            $stmt->bindValue(':qte', $qte);
+            $stmt->execute();
+
+            if ($stmt) {
+                echo "<script><h3><font color=blue>alert('produit commandé');</font></h3></script>";
+                header('Location: commande.php');
             } else {
                 echo '<h3><div class="alert alert-danger"><em>Échec de la commande</em></div></h3>';
             }
-            $sql->closeCursor();
+
+            $stmt->closeCursor();
         } catch (Exception $e) {
-            exit('Erreur:'.$e->getMessage());
+            exit('Erreur : '.$e->getMessage());
         }
     }
 
@@ -29,22 +32,25 @@
             include 'connexion_bd.php';
             $daten = date('Y-m-d H:i:s');
             $sql = 'INSERT INTO ligne_commande(Id_pro,Mt_com,Date_com) values(:pro,:mont,:daten)';
-            $sql = $db->prepare($sql);
-            $sql->bindValue(':pro', $id_produit);
-            $sql->bindValue(':mont', $mont);
-            $sql->bindValue(':daten', $daten);
-            $sql->execute();
-            if ($sql) {
-                echo "<script><h3><font color=blue>alert('produit commander');</font></h3></script>";
-                header('Location:commande.php');
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':pro', $id_produit);
+            $stmt->bindValue(':mont', $mont);
+            $stmt->bindValue(':daten', $daten);
+            $success = $stmt->execute(); // Exécute la requête et stocke le résultat
+
+            if ($success) {
+                echo "<script><h3><font color=blue>alert('produit commandé');</font></h3></script>";
+                header('Location: commande.php');
             } else {
                 echo '<h3><div class="alert alert-danger"><em>Échec de la commande</em></div></h3>';
             }
-            $sql->closeCursor();
+
+            $stmt->closeCursor(); // Ferme le curseur
         } catch (Exception $e) {
-            exit('erreur2'.$e->getmessage());
+            exit('Erreur : '.$e->getMessage());
         }
     }
+
     function Afficher_commande()
     {
         try {
@@ -123,7 +129,7 @@ if (isset($_POST['mont'])) {
     $mont = $_POST['mont'];
 }
  if (isset($_POST['commander_single'])) {
-     Enregistrer_vente($qte, $id_util, );
+     Enregistrer_vente($qte, $id_util);
      enregis($id_produit, $mont);
  }
 include '../html/commande.html';
